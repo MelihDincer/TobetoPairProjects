@@ -9,6 +9,5 @@ namespace Kodlama.io_Project.Entities.Concrete
         public string LastName { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
-        public List<Course> Course { get; set; }
     }
 }

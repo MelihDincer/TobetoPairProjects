@@ -19,7 +19,7 @@ namespace Workshop_2.DataAccess.Concretes.InMemory
 
         public void Delete(Course course)
         {
-            var value = courses.Where(c => c.Id == course.Id).FirstOrDefault();  //Silinecek veriyi gönderilen modelin id değerinden yakaladık.
+            var value = courses.FirstOrDefault(c => c.Id == course.Id);  //Silinecek veriyi gönderilen modelin id değerinden yakaladık.
             courses.Remove(value); //Listeden ilgili id değerine sahip veriyi sildik.
         }
 
@@ -30,18 +30,19 @@ namespace Workshop_2.DataAccess.Concretes.InMemory
 
         public Course GetById(int id)
         {
-            var value = courses.Where(c => c.Id == id).FirstOrDefault(); //Id değerine göre istenilen veriyi yakaladık.
+            var value = courses.FirstOrDefault(c => c.Id == id); //Id değerine göre istenilen veriyi yakaladık.
             return value; //Yakalanan veriyi döndürdük.
         }
 
         public void Update(Course course)
         {
-            var value = courses.Where(c => c.Id == course.Id).FirstOrDefault(); //Güncellenecek veriyi yakaladık.
+            var value = courses.FirstOrDefault(c => c.Id == course.Id); //Güncellenecek veriyi yakaladık.
             value.CourseName = course.CourseName;
             value.Title = course.Title;
             value.CategoryId = course.CategoryId;
             value.InstructorId = course.InstructorId;
             value.Description = course.Description;
+            value.ImageUrl = course.ImageUrl;
         }
     }
 }

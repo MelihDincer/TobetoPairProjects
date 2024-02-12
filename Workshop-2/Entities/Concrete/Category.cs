@@ -7,6 +7,5 @@ namespace Kodlama.io_Project.Entities.Concrete
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<Course> Courses { get; set; }
     }
 }

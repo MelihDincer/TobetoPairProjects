@@ -11,7 +11,6 @@ namespace Kodlama.io_Project.Entities.Concrete
         public string CourseName { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public Category Category { get; set; }
-        public Instructor Instructor { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

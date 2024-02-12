@@ -21,7 +21,7 @@ namespace Workshop_2.DataAccess.Concretes.InMemory
 
         public void Delete(Instructor instructor)
         {
-            var value = instructors.Where(c => c.Id == instructor.Id).FirstOrDefault();  //Silinecek veriyi gönderilen modelin id değerinden yakaladık.
+            var value = instructors.FirstOrDefault(c => c.Id == instructor.Id);  //Silinecek veriyi gönderilen modelin id değerinden yakaladık.
             instructors.Remove(value); //Listeden ilgili id değerine sahip veriyi sildik.
         }
 
@@ -32,13 +32,13 @@ namespace Workshop_2.DataAccess.Concretes.InMemory
 
         public Instructor GetById(int id)
         {
-            var value = instructors.Where(c => c.Id == id).FirstOrDefault(); //Id değerine göre istenilen veriyi yakaladık.
+            var value = instructors.FirstOrDefault(c => c.Id == id); //Id değerine göre istenilen veriyi yakaladık.
             return value; //Yakalanan veriyi döndürdük.
         }
 
         public void Update(Instructor instructor)
         {
-            var value = instructors.Where(c => c.Id == instructor.Id).FirstOrDefault(); //Güncellenecek veriyi yakaladık.
+            var value = instructors.FirstOrDefault(c => c.Id == instructor.Id); //Güncellenecek veriyi yakaladık.
             value.FirstName = instructor.FirstName;
             value.LastName = instructor.LastName;
             value.ImageUrl = instructor.ImageUrl;
