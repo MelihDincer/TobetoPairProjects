@@ -2,9 +2,9 @@
 using Workshop_2.Business.Concretes;
 using Workshop_2.Business.Dtos.Requests.CategoryRequests;
 using Workshop_2.Business.Dtos.Requests.InstructorRequests;
+using Workshop_2.Business.Dtos.Requests.CourseRequests;
 using Workshop_2.DataAccess.Concretes.InMemory;
 
-/*
 // -- Dal Testleri
 ImInstructorDal imInstructorDal = new ImInstructorDal();
 
@@ -45,7 +45,7 @@ foreach (var instructor in imInstructorDal.GetAll())
    Console.WriteLine("------------------------------------------------------------------------");
    Console.WriteLine("------------------------------------------------------------------------");
 }
-//InstructorList(imInstructorDal);
+InstructorList(imInstructorDal);
 
 Instructor instructor2 = imInstructorDal.GetById(2);
 Console.WriteLine(instructor2.FirstName + " " + instructor2.LastName);
@@ -97,13 +97,6 @@ foreach (var course in imCourseDal.GetAll())
 {
    Console.WriteLine($"{course.CategoryId}  {course.InstructorId}   {course.CourseName}       {course.Description}");
 }
-static void InstructorList(ImInstructorDal imInstructorDal)
-{
-   foreach (var instructor in imInstructorDal.GetAll())
-   {
-       Console.WriteLine(instructor.FirstName + " " + instructor.LastName);
-   }
-}
 
 //--Manager Testleri
 
@@ -116,7 +109,7 @@ instructorManager.Add(new CreateInstructorRequest
    ImageUrl = "test"
 });
 
-//GetInstructorList(instructorManager);
+GetInstructorList(instructorManager);
 
 instructorManager.Delete(new DeleteInstructorRequest
 {
@@ -136,19 +129,7 @@ InstructorManager instructorManager2 = new(new ImInstructorDal());
 
 var value = instructorManager2.GetById(1);
 Console.WriteLine(value.FirstName + " " + value.LastName + " " + value.Description + " " + value.ImageUrl);
-//GetInstructorList(instructorManager);
-
-static void GetInstructorList(InstructorManager instructorManager)
-{
-   InstructorManager instructorManager2 = new(new ImInstructorDal());
-   foreach (var instructor in instructorManager.GetAll())
-   {
-       Console.WriteLine(instructor.FirstName + "\n" + instructor.LastName + "\n" + instructor.Description + "\n" + instructor.ImageUrl);
-       Console.WriteLine("------------------------------------------------------------------------");
-       Console.WriteLine("------------------------------------------------------------------------");
-   }
-}
-*/
+GetInstructorList(instructorManager);
 
 CategoryManager categoryManager = new(new ImCategoryDal());
 categoryManager.Add(new CreateCategoryRequest
@@ -162,14 +143,82 @@ categoryManager.Delete(new DeleteCategoryRequest
 {
     Id = 1
 });
+
 GetCategoryList(categoryManager);
 
+categoryManager.Update(new UpdateCategoryRequest
+{
+    Id = 2,
+    Name = "Yazılım"
+});
+GetCategoryList(categoryManager);
 
+Console.WriteLine(categoryManager.GetById(2).Name);
 static void GetCategoryList(CategoryManager categoryManager)
 {
     foreach (var category in categoryManager.GetAll())
     {
         Console.WriteLine(category.Name);
+        Console.WriteLine("------------------------------------------------------------------------");
+    }
+}
+
+CourseManager courseManager = new(new ImCourseDal());
+courseManager.Add(new CreateCourseRequest
+{
+    CategoryId = 1,
+    InstructorId = 1,
+    CourseName = "Swift Yazılımcı Yetiştirme Kampı",
+    Description = "Yeni açılan bu kursumuza katılımınızı bekliyoruz.",
+    ImageUrl = "test",
+    Price = "Ücretsiz"
+});
+
+GetCourseList(courseManager);
+
+courseManager.Delete(new DeleteCourseRequest
+{
+    Id = 1
+});
+
+GetCourseList(courseManager);
+
+courseManager.Update(new UpdateCourseRequest
+{
+    Id = 2,
+    CategoryId = 1,
+    CourseName = "Güncellenen Kurs Adı",
+    Description = "Güncelleme başarılı...",
+    ImageUrl = "test",
+    InstructorId = 1,
+    Price = "150 TL"
+});
+
+GetCourseList(courseManager);
+
+//Methods
+static void GetInstructorList(InstructorManager instructorManager)
+{
+    InstructorManager instructorManager2 = new(new ImInstructorDal());
+    foreach (var instructor in instructorManager.GetAll())
+    {
+        Console.WriteLine(instructor.FirstName + "\n" + instructor.LastName + "\n" + instructor.Description + "\n" + instructor.ImageUrl);
+        Console.WriteLine("------------------------------------------------------------------------");
+        Console.WriteLine("------------------------------------------------------------------------");
+    }
+}
+static void InstructorList(ImInstructorDal imInstructorDal)
+{
+    foreach (var instructor in imInstructorDal.GetAll())
+    {
+        Console.WriteLine(instructor.FirstName + " " + instructor.LastName);
+    }
+}
+static void GetCourseList(CourseManager courseManager)
+{
+    foreach (var course in courseManager.GetAll())
+    {
+        Console.WriteLine($"Kategori id={course.CategoryId} ve Instructor id= {course.InstructorId} olan kursun adı: {course.CourseName} \n Açıklama: {course.Description} \n Image Url: {course.ImageUrl} \n Price: {course.Price}");
         Console.WriteLine("------------------------------------------------------------------------");
     }
 }
