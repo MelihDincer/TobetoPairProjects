@@ -2,7 +2,7 @@
 
 namespace Workshop_2.DataAccess.Abstracts
 {
-    internal interface IInstructorDal
+    public interface IInstructorDal
     {
         void Add(Instructor instructor);
         void Delete(Instructor instructor);

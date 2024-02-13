@@ -8,9 +8,11 @@ namespace Workshop_2.DataAccess.Concretes.InMemory
         List<Course> courses = new List<Course>();
         public ImCourseDal()
         {
-            courses.Add(new Course { Id = 1, CategoryId = 2, InstructorId = 1, CourseName = "2024 - Yazılım Geliştirici Yetiştirme Kampı C#", Title = "2024 Yazılım Geliştirici Yetiştirme Kampı (C#)", Description = "2 ay sürecek Yazılım Geliştirici Yetiştirme Kampımızın takip, döküman ve duyurularını buradan yapacağız." });
-            courses.Add(new Course { Id = 2, CategoryId = 2, InstructorId = 2, CourseName = "(2023) Yazılım Geliştirici Yetiştirme Kampı (Python & Selenium)", Title = "(2023) Yazılım Geliştirici Yetiştirme Kampı (Python & Selenium)", Description = "Python & Selenium Yazılım Geliştirici Yetiştirme Kampımızın takip, döküman ve duyurularını buradan yapacağız." });
-            courses.Add(new Course { Id = 3, CategoryId = 2, InstructorId = 1, CourseName = "Yazılım Geliştirici Yetiştirme Kampı (JavaScript)", Title = "Yazılım Geliştirici Yetiştirme Kampı (JavaScript)", Description = "1,5 ay sürecek ücretsiz ve profesyonel bir programla, sıfırdan yazılım geliştirme öğreniyoruz." });
+            //Diğer kurs bilgileri eklenecek.
+
+            courses.Add(new Course { Id = 1, CategoryId = 2, InstructorId = 1, CourseName = "2024 Yazılım Geliştirici Yetiştirme Kampı (C#)", Description = "2 ay sürecek Yazılım Geliştirici Yetiştirme Kampımızın takip, döküman ve duyurularını buradan yapacağız.", ImageUrl = "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/We86Zc3xQy6FUqhyBJJc", Price = "Ücretsiz" });
+            courses.Add(new Course { Id = 2, CategoryId = 2, InstructorId = 2, CourseName = "(2023) Yazılım Geliştirici Yetiştirme Kampı (Python & Selenium)", Description = "Python & Selenium Yazılım Geliştirici Yetiştirme Kampımızın takip, döküman ve duyurularını buradan yapacağız.", ImageUrl = "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/3nqAGqHARL6uEULbaQvr", Price = "Ücretsiz" });
+            courses.Add(new Course { Id = 3, CategoryId = 2, InstructorId = 1, CourseName = "Yazılım Geliştirici Yetiştirme Kampı (JavaScript)", Description = "1,5 ay sürecek ücretsiz ve profesyonel bir programla, sıfırdan yazılım geliştirme öğreniyoruz.", ImageUrl = "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://www.filepicker.io/api/file/Cs7lHNsJSCi1mkPzo8fT", Price = "Ücretsiz" });
         }
         public void Add(Course course)
         {
@@ -38,11 +40,11 @@ namespace Workshop_2.DataAccess.Concretes.InMemory
         {
             var value = courses.FirstOrDefault(c => c.Id == course.Id); //Güncellenecek veriyi yakaladık.
             value.CourseName = course.CourseName;
-            value.Title = course.Title;
             value.CategoryId = course.CategoryId;
             value.InstructorId = course.InstructorId;
             value.Description = course.Description;
             value.ImageUrl = course.ImageUrl;
+            value.Price = course.Price;
         }
     }
 }

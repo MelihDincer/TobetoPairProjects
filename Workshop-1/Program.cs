@@ -28,10 +28,35 @@ CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
 categoryManager.Add(new CreateCategoryRequest
 {
     Name = "Deneme Kategorisi",
-    Description = "Bu bir açıklama satırıdır. "
+    Description = "Bu bir açıklama satırıdır."
 });
 
 foreach (var category in categoryManager.GetCategories())
 {
     Console.WriteLine(category.Name + "\n" + category.Description);
+}
+
+
+ProductManager productManager2 = new ProductManager(new EfProductDal());
+productManager2.Add(new CreateProductRequest
+{
+    CategoryId = 1,
+    Description = "test",
+    DiscountRate = 10,
+    Name = "test name",
+    UnitPrice = 1000
+});
+
+productManager2.Add(new CreateProductRequest
+{
+    CategoryId = 2,
+    Description = "test",
+    DiscountRate = 10,
+    Name = "test name",
+    UnitPrice = 1000
+});
+
+foreach (var item in productManager2.GetProducts())
+{
+    Console.WriteLine(item.Id);
 }

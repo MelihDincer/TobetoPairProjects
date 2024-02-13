@@ -9,7 +9,6 @@ namespace Workshop_1.Business.Concretes
     public class CategoryManager : ICategoryService
     {
         ICategoryDal _categoryDal;
-
         public CategoryManager(ICategoryDal categoryDal)
         {
             _categoryDal = categoryDal;

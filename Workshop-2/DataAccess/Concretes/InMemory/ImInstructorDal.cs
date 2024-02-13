@@ -12,7 +12,8 @@ namespace Workshop_2.DataAccess.Concretes.InMemory
         List<Instructor> instructors = new List<Instructor>();
         public ImInstructorDal()
         {
-            instructors.Add(new Instructor { Id = 1, FirstName = "Engin", LastName = "Demiroğ", ImageUrl = "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:30,height:30/https://www.filepicker.io/api/file/GsqiGFGCRmuBuel0qqF3", Description = instructorDescription1 });instructors.Add(new Instructor { Id = 2, FirstName = "Halit Enes", LastName = "Kalaycı", ImageUrl = "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:30,height:30/https://cdn.filestackcontent.com/XwoZsQ1LTaOU9ke59grx", Description = instructorDescription2 });
+            instructors.Add(new Instructor { Id = 1, FirstName = "Engin", LastName = "Demiroğ", ImageUrl = "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:30,height:30/https://www.filepicker.io/api/file/GsqiGFGCRmuBuel0qqF3", Description = instructorDescription1 });
+            instructors.Add(new Instructor { Id = 2, FirstName = "Halit Enes", LastName = "Kalaycı", ImageUrl = "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:30,height:30/https://cdn.filestackcontent.com/XwoZsQ1LTaOU9ke59grx", Description = instructorDescription2 });
         }
         public void Add(Instructor instructor)
         {
